@@ -271,10 +271,9 @@
             <li>
               <label>
                 <i>unknown_document</i>&nbsp;
-                <strong style="font-size: small;">Custom Firmware</strong>
-                <div class="tooltip right max">
-                  Flash custom firmware file from your computer.
-                  Flasher supports <b>.bin</b> files for esp32 devices and OTA <b>.zip</b> files for nRF52 devices.
+                <div class="max">
+                  <strong style="font-size: small;">Custom Firmware</strong>
+                  <div class="custom-fw-hint">Upload a <b>.bin</b> (ESP32) or <b>.zip</b> (nRF52) file</div>
                 </div>
                 <input type="file" accept=".zip,.bin" @change="customFirmwareLoad">
               </label>

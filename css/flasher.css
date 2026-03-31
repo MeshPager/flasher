@@ -130,8 +130,8 @@ body:has([v-cloak]):after {
 
 .btn-outline {
   background: transparent !important;
-  color: var(--mp-text) !important;
-  border: 1px solid var(--mp-border) !important;
+  color: var(--mp-text-bright) !important;
+  border: 1px solid rgba(75,184,196,0.3) !important;
   border-radius: 50px !important;
   padding: 8px 28px !important;
   font-family: 'Rajdhani', sans-serif !important;
@@ -350,6 +350,13 @@ body:has([v-cloak]):after {
 }
 #app .version .pre { padding-bottom: 10px; }
 #app img.icon { height: 20px; opacity: 0.7; }
+
+/* Custom firmware hint */
+.custom-fw-hint {
+  font-size: 0.7rem;
+  color: var(--mp-text-dim);
+  margin-top: 2px;
+}
 
 .flash-container { padding-bottom: 80px; }
 .strong { font-weight: 700; }
