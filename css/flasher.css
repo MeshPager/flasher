@@ -1,102 +1,100 @@
-/* MeshPager theme overrides for beer.css */
+/* MeshPager Flasher — matches meshpager.com aesthetic */
+
 :root {
   --mp-orange: #d4722a;
+  --mp-orange-hover: #b8611f;
   --mp-amber: #e8a84c;
   --mp-cyan: #4bb8c4;
   --mp-cyan-light: #6ed4d8;
   --mp-bg: #060a10;
   --mp-bg-card: #0b1220;
   --mp-bg-card-hover: #0f1728;
-  --mp-border: rgba(75,184,196,0.1);
-  --mp-border-hover: rgba(212,114,42,0.25);
+  --mp-border: rgba(75,184,196,0.12);
+  --mp-border-hover: rgba(212,114,42,0.3);
   --mp-text: #b0b8c8;
   --mp-text-dim: #5a6478;
   --mp-text-bright: #e4e8f0;
   --mp-radius: 14px;
+  --mp-radius-sm: 10px;
 }
 
+/* Override beer.css dark theme */
 body.dark {
-  --primary: var(--mp-orange);
-  --on-primary: #fff;
-  --surface: var(--mp-bg);
-  --surface-container: var(--mp-bg-card);
-  --on-surface: var(--mp-text);
-  --on-surface-variant: var(--mp-text-dim);
-  --outline: var(--mp-border);
-  --outline-variant: var(--mp-border);
+  --primary: var(--mp-orange) !important;
+  --on-primary: #fff !important;
+  --surface: var(--mp-bg) !important;
+  --surface-container: var(--mp-bg-card) !important;
+  --on-surface: var(--mp-text) !important;
+  --on-surface-variant: var(--mp-text-dim) !important;
+  --outline: var(--mp-border) !important;
+  --outline-variant: var(--mp-border) !important;
+  --secondary: var(--mp-cyan) !important;
+  --on-secondary: #fff !important;
   background: var(--mp-bg);
   color: var(--mp-text);
   font-family: 'IBM Plex Mono', monospace;
 }
 
-[v-cloak] {
-  display: none;
-}
+[v-cloak] { display: none; }
 
 body {
   display: flex;
   min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(75,184,196,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 100%, rgba(212,114,42,0.03) 0%, transparent 60%),
+    var(--mp-bg);
 }
 
+/* Loading spinner */
 body:has([v-cloak]):after {
   content: '';
   position: absolute;
-  top: calc(50% - 50px);
-  left: calc(50% - 50px);
+  top: calc(50% - 25px);
+  left: calc(50% - 25px);
   width: 50px;
   aspect-ratio: 1;
   border-radius: 50%;
-  border: 8px solid var(--mp-orange);
-  animation:
-    l20-1 0.8s infinite linear alternate,
-    l20-2 1.6s infinite linear;
+  border: 3px solid var(--mp-border);
+  border-top-color: var(--mp-orange);
+  animation: spin 0.8s linear infinite;
 }
-@keyframes l20-1{
-   0%    {clip-path: polygon(50% 50%,0       0,  50%   0%,  50%    0%, 50%    0%, 50%    0%, 50%    0% )}
-   12.5% {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100%   0%, 100%   0%, 100%   0% )}
-   25%   {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100% 100%, 100% 100%, 100% 100% )}
-   50%   {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100% 100%, 50%  100%, 0%   100% )}
-   62.5% {clip-path: polygon(50% 50%,100%    0, 100%   0%,  100%   0%, 100% 100%, 50%  100%, 0%   100% )}
-   75%   {clip-path: polygon(50% 50%,100% 100%, 100% 100%,  100% 100%, 100% 100%, 50%  100%, 0%   100% )}
-   100%  {clip-path: polygon(50% 50%,50%  100%,  50% 100%,   50% 100%,  50% 100%, 50%  100%, 0%   100% )}
-}
-@keyframes l20-2{
-  0%    {transform:scaleY(1)  rotate(0deg)}
-  49.99%{transform:scaleY(1)  rotate(135deg)}
-  50%   {transform:scaleY(-1) rotate(0deg)}
-  100%  {transform:scaleY(-1) rotate(-135deg)}
-}
+@keyframes spin { to { transform: rotate(360deg); } }
 
+/* ── Layout ── */
 #app {
   flex-grow: 1;
-  max-width: 800px;
+  max-width: 720px;
   margin: 0 auto;
   width: 100%;
+  padding: 0 16px;
 }
 
-/* Hero section */
+/* ── Hero ── */
 .hero {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 48px 20px 32px;
+  padding: 56px 20px 40px;
   text-align: center;
 }
 
 .hero-logo {
-  width: 280px;
-  max-width: 70vw;
-  margin-bottom: 12px;
+  width: 300px;
+  max-width: 75vw;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 0 40px rgba(212,114,42,0.12));
 }
 
 .hero-subtitle {
   font-family: 'Rajdhani', sans-serif;
   font-weight: 600;
-  font-size: 1.1rem;
-  letter-spacing: 6px;
+  font-size: 0.85rem;
+  letter-spacing: 8px;
   color: var(--mp-cyan);
-  margin: 0 0 28px;
+  margin: 0 0 32px;
   text-transform: uppercase;
+  opacity: 0.85;
 }
 
 .hero-actions {
@@ -106,16 +104,17 @@ body:has([v-cloak]):after {
   justify-content: center;
 }
 
+/* ── Branded buttons ── */
 .btn-orange {
   background: var(--mp-orange) !important;
   color: #fff !important;
   border: 1px solid var(--mp-orange) !important;
-  border-radius: var(--mp-radius) !important;
-  padding: 10px 24px !important;
+  border-radius: 50px !important;
+  padding: 10px 28px !important;
   font-family: 'Rajdhani', sans-serif !important;
   font-weight: 600;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
   text-transform: uppercase;
   cursor: pointer;
   display: inline-flex;
@@ -124,20 +123,21 @@ body:has([v-cloak]):after {
   transition: all 0.2s;
 }
 .btn-orange:hover {
-  background: #b8611f !important;
-  border-color: #b8611f !important;
+  background: var(--mp-orange-hover) !important;
+  border-color: var(--mp-orange-hover) !important;
+  box-shadow: 0 0 20px rgba(212,114,42,0.25);
 }
 
 .btn-outline {
   background: transparent !important;
-  color: var(--mp-cyan) !important;
-  border: 1px solid var(--mp-cyan) !important;
-  border-radius: var(--mp-radius) !important;
-  padding: 10px 24px !important;
+  color: var(--mp-text) !important;
+  border: 1px solid var(--mp-border) !important;
+  border-radius: 50px !important;
+  padding: 10px 28px !important;
   font-family: 'Rajdhani', sans-serif !important;
   font-weight: 600;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
   text-transform: uppercase;
   cursor: pointer;
   display: inline-flex;
@@ -146,30 +146,35 @@ body:has([v-cloak]):after {
   transition: all 0.2s;
 }
 .btn-outline:hover {
-  background: rgba(75,184,196,0.1) !important;
+  border-color: var(--mp-cyan) !important;
+  color: var(--mp-cyan) !important;
+  background: rgba(75,184,196,0.05) !important;
 }
 
-/* Device section */
+/* ── Device section ── */
 .device-section {
-  padding: 0 8px;
+  padding: 0;
 }
 
 .section-title {
   font-family: 'Rajdhani', sans-serif;
   font-weight: 600;
-  font-size: 1rem;
-  letter-spacing: 2px;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--mp-text-dim);
-  margin: 0 0 12px;
-  padding: 0 8px;
+  margin: 0 0 16px 4px;
 }
 
+/* Filter input */
 .filter-field {
-  margin-bottom: 8px !important;
+  margin-bottom: 12px !important;
+  border-radius: var(--mp-radius-sm) !important;
+  border-color: var(--mp-border) !important;
+  background: var(--mp-bg-card) !important;
 }
 
-/* Device list styling */
+/* ── Device list ── */
 #app .list.border {
   border-color: var(--mp-border);
   border-radius: var(--mp-radius);
@@ -180,48 +185,68 @@ body:has([v-cloak]):after {
   border-color: var(--mp-border);
 }
 
-#app .device-select {
-  transition: background 0.15s;
-}
-
-#app .device-select:hover {
-  background: var(--mp-bg-card-hover) !important;
-}
-
 #app details summary {
   background: var(--mp-bg-card) !important;
   font-family: 'Rajdhani', sans-serif;
-  letter-spacing: 1px;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--mp-cyan);
+  border-top: 1px solid var(--mp-cyan) !important;
+  padding: 12px 16px;
 }
 
-/* Button overrides */
+#app details summary strong {
+  color: var(--mp-cyan);
+}
+
+#app .device-select {
+  transition: all 0.15s;
+  border-radius: 0 !important;
+}
+#app .device-select:hover {
+  background: var(--mp-bg-card-hover) !important;
+  padding-left: 20px;
+}
+
+/* Custom Firmware label — make it look clickable */
+#app .list li label {
+  cursor: pointer;
+  transition: all 0.15s;
+  padding: 8px 16px;
+}
+#app .list li label:hover {
+  background: var(--mp-bg-card-hover);
+}
+
+/* ── General button overrides ── */
 #app button {
-  border-radius: var(--mp-radius);
+  border-radius: var(--mp-radius-sm);
+  font-family: 'IBM Plex Mono', monospace;
 }
-
 #app button.circle {
   border-radius: 50%;
 }
 
-/* Progress bar */
+/* ── Progress bar ── */
 #app progress:not(.circle) {
   border-radius: 8px;
+  height: 6px;
 }
 #app progress:not(.circle)::-webkit-progress-bar {
   background: var(--mp-bg-card);
   border-radius: 8px;
 }
 #app progress:not(.circle)::-webkit-progress-value {
-  background: var(--mp-orange);
+  background: linear-gradient(90deg, var(--mp-orange), var(--mp-amber));
   border-radius: 8px;
 }
 
-/* Misc */
+/* ── Header nav (inner pages) ── */
 #app h5.logo-top img {
   height: 32px;
   margin-top: -4px;
 }
-
 #app h5.logo-top span {
   font-family: 'Rajdhani', sans-serif;
   font-style: italic;
@@ -229,12 +254,13 @@ body:has([v-cloak]):after {
   line-height: 0.9;
 }
 
-#app select {
-  cursor: pointer;
-}
+#app select { cursor: pointer; }
 
+/* ── Tooltips ── */
 #app .tooltip:has(>.device) {
-  background: #f0f0f055;
+  background: rgba(11,18,32,0.95);
+  border: 1px solid var(--mp-border);
+  border-radius: var(--mp-radius);
   width: auto;
 }
 #app img.device {
@@ -242,6 +268,8 @@ body:has([v-cloak]):after {
   max-width: 400px;
   max-height: 400px;
 }
+
+/* ── Flash log ── */
 #app div.autoscroller {
   overflow: auto;
   max-height: 300px;
@@ -250,10 +278,15 @@ body:has([v-cloak]):after {
 }
 #app pre.term {
   font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
   background: var(--mp-bg-card);
+  border: 1px solid var(--mp-border);
   border-radius: var(--mp-radius);
   padding: 16px;
+  color: var(--mp-cyan-light);
 }
+
+/* ── Serial console overlay ── */
 #app .overlay {
   display: flex !important;
   flex-direction: column;
@@ -266,6 +299,7 @@ body:has([v-cloak]):after {
   flex-grow: 1;
   margin: 0;
   background: var(--mp-bg-card);
+  border: 1px solid var(--mp-border);
   border-radius: var(--mp-radius);
   font-family: 'IBM Plex Mono', monospace;
 }
@@ -282,60 +316,71 @@ body:has([v-cloak]):after {
   border: 0;
   font-family: 'IBM Plex Mono', monospace;
   font-size: .875rem;
-  color: var(--mp-text-bright);
+  color: var(--mp-cyan-light);
 }
-#app .console-input:focus, #app .console-input:focus {
+#app .console-input:focus {
   outline: none;
 }
+
+/* ── Misc ── */
 #app .pre {
   white-space-collapse: preserve;
   min-width: 300px;
 }
 #app a {
-  text-decoration: underline;
+  text-decoration: none;
   color: var(--mp-cyan);
+  transition: color 0.15s;
+}
+#app a:hover {
+  color: var(--mp-cyan-light);
+  text-decoration: underline;
 }
 
-#app .version {
-  flex-wrap: wrap;
-}
+#app .version { flex-wrap: wrap; }
 #app .version div.field {
   min-width: 140px;
   align-self: flex-start;
 }
-#app .version .pre {
-  padding-bottom: 10px;
-}
-#app img.icon {
-  height: 20px;
-}
+#app .version .pre { padding-bottom: 10px; }
+#app img.icon { height: 20px; opacity: 0.7; }
 
-.flash-container {
-  padding-bottom: 80px;
-}
+.flash-container { padding-bottom: 80px; }
+.strong { font-weight: 700; }
+.text-wrap { text-wrap: auto; }
 
-.strong {
-  font-weight: 700;
-}
-
-.text-wrap {
-  text-wrap: auto;
-}
-
-/* Headings */
+/* ── Headings ── */
 #app h6, #app h5 {
   font-family: 'Rajdhani', sans-serif;
+  color: var(--mp-text-bright);
 }
 
-/* Article cards */
+/* ── Article cards (flash status, firmware details) ── */
 #app article {
   background: var(--mp-bg-card);
   border: 1px solid var(--mp-border);
   border-radius: var(--mp-radius);
 }
 
-/* Snackbar */
+/* ── Snackbar ── */
 #app .snackbar {
   border-radius: var(--mp-radius);
   font-family: 'IBM Plex Mono', monospace;
+  background: var(--mp-bg-card);
+  border: 1px solid var(--mp-border);
+}
+
+/* ── Footer link ── */
+.footer-link {
+  text-align: center;
+  padding: 32px 0 24px;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  color: var(--mp-text-dim);
+}
+.footer-link a {
+  color: var(--mp-text-dim) !important;
+}
+.footer-link a:hover {
+  color: var(--mp-cyan) !important;
 }
