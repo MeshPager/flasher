@@ -84,8 +84,8 @@ body:has([v-cloak]):after {
 }
 
 .hero-logo {
-  width: 340px;
-  max-width: 80vw;
+  width: 280px;
+  max-width: 70vw;
   margin-bottom: 12px;
 }
 
@@ -107,46 +107,46 @@ body:has([v-cloak]):after {
 }
 
 .btn-orange {
-  background: var(--mp-orange);
-  color: #fff;
-  border: 1px solid var(--mp-orange);
-  border-radius: var(--mp-radius);
-  padding: 10px 24px;
-  font-family: 'Rajdhani', sans-serif;
+  background: var(--mp-orange) !important;
+  color: #fff !important;
+  border: 1px solid var(--mp-orange) !important;
+  border-radius: var(--mp-radius) !important;
+  padding: 10px 24px !important;
+  font-family: 'Rajdhani', sans-serif !important;
   font-weight: 600;
   font-size: 0.9rem;
   letter-spacing: 1px;
   text-transform: uppercase;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   transition: all 0.2s;
 }
 .btn-orange:hover {
-  background: #b8611f;
-  border-color: #b8611f;
+  background: #b8611f !important;
+  border-color: #b8611f !important;
 }
 
 .btn-outline {
-  background: transparent;
-  color: var(--mp-cyan);
-  border: 1px solid var(--mp-cyan);
-  border-radius: var(--mp-radius);
-  padding: 10px 24px;
-  font-family: 'Rajdhani', sans-serif;
+  background: transparent !important;
+  color: var(--mp-cyan) !important;
+  border: 1px solid var(--mp-cyan) !important;
+  border-radius: var(--mp-radius) !important;
+  padding: 10px 24px !important;
+  font-family: 'Rajdhani', sans-serif !important;
   font-weight: 600;
   font-size: 0.9rem;
   letter-spacing: 1px;
   text-transform: uppercase;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   transition: all 0.2s;
 }
 .btn-outline:hover {
-  background: rgba(75,184,196,0.1);
+  background: rgba(75,184,196,0.1) !important;
 }
 
 /* Device section */
