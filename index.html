@@ -195,28 +195,24 @@
         </button>
         </nav>
       </div>
-      <div v-else-if="selected.device">
-        <header>
-          <nav>
-            <button class="circle transparent" @click="stepBack"><i>arrow_back</i></button>
+      <div v-else-if="selected.device" class="role-page">
+        <div class="role-header">
+          <button class="circle transparent" @click="stepBack"><i>arrow_back</i></button>
+          <div class="role-device-info">
             <i>developer_board</i>
-            <span class="small strong">{{ selected.device.name }}</span>
-          </nav>
-          <nav class="no-margin">
-            <h6 class="small max">Choose role</h6>
-          </nav>
-        </header>
-        <ul class="list border">
+            <span class="strong">{{ selected.device.name }}</span>
+          </div>
+        </div>
+        <h6 class="section-title" style="margin-top: 24px;">Choose role</h6>
+        <div class="role-grid">
           <template v-for="firmware in selected.device.firmware">
-            <li v-if="firmwareHasData(firmware)" :class="getRoleFwValue(firmware, 'class')">
-              <button class="transparent" @click="selected.firmware = firmware">
-                <i>{{ getRoleFwValue(firmware, 'icon') }}</i>
-                <span>{{ getRoleFwValue(firmware, 'title') }} {{ getRoleFwValue(firmware, 'subTitle') }}</span>
-                <div class="tooltip right max" v-if="getRoleFwValue(firmware, 'tooltip')" v-html="getRoleFwValue(firmware, 'tooltip')"></div>
-              </button>
-            </li>
+            <button v-if="firmwareHasData(firmware)" class="role-card" :class="getRoleFwValue(firmware, 'class')" @click="selected.firmware = firmware">
+              <i class="role-icon">{{ getRoleFwValue(firmware, 'icon') }}</i>
+              <div class="role-label">{{ getRoleFwValue(firmware, 'title') }} {{ getRoleFwValue(firmware, 'subTitle') }}</div>
+              <div class="role-desc" v-if="getRoleFwValue(firmware, 'tooltip')" v-html="getRoleFwValue(firmware, 'tooltip')"></div>
+            </button>
           </template>
-        </ul>
+        </div>
       </div>
       <div v-else>
         <div class="hero">

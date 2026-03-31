@@ -353,6 +353,75 @@ body:has([v-cloak]):after {
 #app .version .pre { padding-bottom: 10px; }
 #app img.icon { height: 20px; opacity: 0.7; }
 
+/* ── Role selection page ── */
+.role-page {
+  padding-top: 24px;
+}
+
+.role-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: var(--mp-bg-card);
+  border: 1px solid var(--mp-border);
+  border-radius: var(--mp-radius);
+}
+
+.role-device-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  color: var(--mp-text-bright);
+}
+
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.role-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 24px 16px !important;
+  background: var(--mp-bg-card) !important;
+  border: 1px solid var(--mp-border) !important;
+  border-radius: var(--mp-radius) !important;
+  cursor: pointer;
+  transition: all 0.2s !important;
+  text-align: center;
+  color: var(--mp-text) !important;
+}
+
+.role-card:hover {
+  border-color: var(--mp-orange) !important;
+  background: var(--mp-bg-card-hover) !important;
+  box-shadow: 0 0 20px rgba(212,114,42,0.1);
+}
+
+.role-card .role-icon {
+  font-size: 1.8rem;
+  color: var(--mp-cyan);
+}
+
+.role-card .role-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: var(--mp-text-bright);
+}
+
+.role-card .role-desc {
+  font-size: 0.7rem;
+  color: var(--mp-text-dim);
+  line-height: 1.4;
+}
+
 /* Custom firmware hint */
 .custom-fw-hint {
   font-size: 0.7rem;
