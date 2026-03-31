@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MeshPager flasher</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link href="/css/beer.css" rel="stylesheet">
   <link href="/css/flasher.css" rel="stylesheet">
   <script type="module" src="/flasher.js"></script>
@@ -218,72 +219,68 @@
         </ul>
       </div>
       <div v-else>
-        <header>
-          <nav>
-            <i>bolt</i>
-            <h5 class="small max logo-top">
-              <img src="/img/meshpager.svg"> <span>flasher</span>
-            </h5>
-            <button class="transparent hide-mobile" @click="openSerialGUI()">
+        <div class="hero">
+          <img src="/img/meshpager.svg" class="hero-logo" alt="MeshPager">
+          <p class="hero-subtitle">FIRMWARE FLASHER</p>
+          <div class="hero-actions">
+            <button class="btn-orange" @click="openSerialGUI()">
               <i>manufacturing</i>
               <span>Repeater Setup</span>
-              <div class="tooltip left max">Open GUI to configure Repeaters and Room servers via USB serial</div>
             </button>
-            <button class="transparent" @click="openSerialCon()">
+            <button class="btn-outline" @click="openSerialCon()">
               <i>terminal</i>
               <span>Console</span>
-              <div class="tooltip left max">Open serial console to manage Routers and Room servers</div>
             </button>
-          </nav>
-          <nav class="no-margin">
-            <h6 class="small max">Choose device</h6>
-          </nav>
-        </header>
-        <div class="field label prefix suffix border w-100 no-margin">
-          <i>search</i>
-          <input type="text" placeholder=" " v-model="deviceFilterText" autofocus>
-          <label>Filter</label>
+          </div>
         </div>
-        <ul class="list border">
-          <li v-for="(deviceGroup, type) in devices">
-            <details open>
-              <summary style="background-color: var(--surface-container)">
-                <div>
-                  <strong>MeshPager Firmware</strong>
-                  <div class="tooltip right max">
-                    Open Source <a class="inverse-link" target="_blank" href="https://github.com/MeshPager/fw">MeshPager firmware</a>
+        <div class="device-section">
+          <h6 class="section-title">Choose device</h6>
+          <div class="field label prefix suffix border w-100 no-margin filter-field">
+            <i>search</i>
+            <input type="text" placeholder=" " v-model="deviceFilterText" autofocus>
+            <label>Filter</label>
+          </div>
+          <ul class="list border">
+            <li v-for="(deviceGroup, type) in devices">
+              <details open>
+                <summary style="background-color: var(--surface-container)">
+                  <div>
+                    <strong>MeshPager Firmware</strong>
+                    <div class="tooltip right max">
+                      Open Source <a class="inverse-link" target="_blank" href="https://github.com/MeshPager/fw">MeshPager firmware</a>
+                    </div>
                   </div>
-                </div>
-              </summary>
-              <ul class="list border">
-                <li v-for="device in deviceGroup">
-                  <template v-if="device.firmware.length > 0">
-                    <button class="device-select transparent" @click="selected.device = device">
-                      <img class="icon" :title="device.type" :src="`/img/${device.type}.svg`" v-if="device.type !== 'noflash'">
-                      <i v-else>developer_board</i>
-                      <span>{{ device.name }}</span>
-                      <div class="tooltip right max" v-if="device.tooltip" v-html="device.tooltip"></div>
+                </summary>
+                <ul class="list border">
+                  <li v-for="device in deviceGroup">
+                    <template v-if="device.firmware.length > 0">
+                      <button class="device-select transparent" @click="selected.device = device">
+                        <img class="icon" :title="device.type" :src="`/img/${device.type}.svg`" v-if="device.type !== 'noflash'">
+                        <i v-else>developer_board</i>
+                        <span>{{ device.name }}</span>
+                        <div class="tooltip right max" v-if="device.tooltip" v-html="device.tooltip"></div>
+                        <div class="max"></div>
+                      </button>
                       <div class="max"></div>
-                    </button>
-                    <div class="max"></div>
-                    <img class="icon" :src="device.icon" v-if="device.icon" >
-                  </template>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <label>
-              <i>unknown_document</i>&nbsp;
-              <strong style="font-size: small;">Custom Firmware</strong>
-              <div class="tooltip right max">
-                Flash custom firmware file from your computer.
-                Flasher supports <b>.bin</b> files for esp32 devices and OTA <b>.zip</b> files for nRF52 devices.
-              </div>
-              <input type="file" accept=".zip,.bin" @change="customFirmwareLoad">
-            </label>
-          </li>
-        </ul>
+                      <img class="icon" :src="device.icon" v-if="device.icon" >
+                    </template>
+                  </li>
+                </ul>
+              </details>
+            </li>
+            <li>
+              <label>
+                <i>unknown_document</i>&nbsp;
+                <strong style="font-size: small;">Custom Firmware</strong>
+                <div class="tooltip right max">
+                  Flash custom firmware file from your computer.
+                  Flasher supports <b>.bin</b> files for esp32 devices and OTA <b>.zip</b> files for nRF52 devices.
+                </div>
+                <input type="file" accept=".zip,.bin" @change="customFirmwareLoad">
+              </label>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
     <div v-if="serialCon.opened" class="overlay active">
