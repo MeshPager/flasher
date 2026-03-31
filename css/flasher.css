@@ -383,44 +383,48 @@ body:has([v-cloak]):after {
 }
 
 .role-card {
+  all: unset !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  gap: 8px !important;
-  padding: 28px 16px 24px !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  padding: 32px 20px 28px !important;
   background: var(--mp-bg-card) !important;
   border: 1px solid var(--mp-border) !important;
   border-radius: var(--mp-radius) !important;
-  cursor: pointer;
+  cursor: pointer !important;
   transition: all 0.2s !important;
-  text-align: center;
-  color: var(--mp-text) !important;
-  overflow: hidden;
+  text-align: center !important;
+  box-sizing: border-box !important;
 }
 
 .role-card:hover {
   border-color: var(--mp-orange) !important;
   background: var(--mp-bg-card-hover) !important;
-  box-shadow: 0 0 20px rgba(212,114,42,0.1);
+  box-shadow: 0 0 20px rgba(212,114,42,0.1) !important;
 }
 
 .role-card .role-icon {
-  font-size: 1.8rem;
-  color: var(--mp-cyan);
+  font-family: 'Material Symbols Outlined';
+  font-size: 2rem !important;
+  color: var(--mp-cyan) !important;
+  line-height: 1 !important;
 }
 
 .role-card .role-label {
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 600;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  color: var(--mp-text-bright);
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  letter-spacing: 1px !important;
+  color: var(--mp-text-bright) !important;
 }
 
 .role-card .role-desc {
-  font-size: 0.7rem;
-  color: var(--mp-text-dim);
-  line-height: 1.4;
+  font-size: 0.7rem !important;
+  color: var(--mp-text-dim) !important;
+  line-height: 1.4 !important;
+  font-family: 'IBM Plex Mono', monospace !important;
 }
 
 /* Custom firmware hint */
