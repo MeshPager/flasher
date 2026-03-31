@@ -11,8 +11,23 @@ const config = await configRes.json();
 
 let github = [];
 try {
-  const githubRes = await fetch('/releases');
-  if (githubRes.ok) github = await githubRes.json();
+  const githubRes = await fetch('https://api.github.com/repos/MeshPager/fw/releases');
+  if (githubRes.ok) {
+    const releases = await githubRes.json();
+    for (const rel of releases) {
+      if (rel.draft) continue;
+      const tag = rel.tag_name || '';
+      const typePart = tag.replace(/-v\d.*$/, '');  // "companion-v1.0.0" -> "companion"
+      const version = tag.replace(/^.*?-(?=v)/, ''); // "companion-v1.0.0" -> "v1.0.0"
+      const type = typePart.replace(/_/g, '-');       // "room_server" -> "room-server"
+      github.push({
+        type,
+        version,
+        notes: rel.body || '',
+        files: (rel.assets || []).map(a => ({ name: a.name, url: a.browser_download_url }))
+      });
+    }
+  }
 } catch(e) {
   console.warn('Could not fetch releases:', e);
 }
@@ -222,6 +237,7 @@ function setup() {
   }
 
   const getFirmwarePath = (file) => {
+    if (file.name.startsWith('http')) return file.name;
     return file.name.startsWith('/') ? file.name : `${config.staticPath}/${file.name}`;
   }
 
