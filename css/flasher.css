@@ -387,7 +387,7 @@ body:has([v-cloak]):after {
   flex-direction: column !important;
   align-items: center !important;
   gap: 8px !important;
-  padding: 24px 16px !important;
+  padding: 28px 16px 24px !important;
   background: var(--mp-bg-card) !important;
   border: 1px solid var(--mp-border) !important;
   border-radius: var(--mp-radius) !important;
@@ -395,6 +395,7 @@ body:has([v-cloak]):after {
   transition: all 0.2s !important;
   text-align: center;
   color: var(--mp-text) !important;
+  overflow: hidden;
 }
 
 .role-card:hover {
