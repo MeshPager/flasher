@@ -80,8 +80,8 @@ body:has([v-cloak]):after {
 }
 
 .hero-logo {
-  width: 300px;
-  max-width: 75vw;
+  width: 380px;
+  max-width: 80vw;
   margin-bottom: 16px;
   filter: drop-shadow(0 0 40px rgba(212,114,42,0.12));
 }
@@ -110,7 +110,7 @@ body:has([v-cloak]):after {
   color: #fff !important;
   border: 1px solid var(--mp-orange) !important;
   border-radius: 50px !important;
-  padding: 10px 28px !important;
+  padding: 8px 28px !important;
   font-family: 'Rajdhani', sans-serif !important;
   font-weight: 600;
   font-size: 0.8rem;
@@ -133,7 +133,7 @@ body:has([v-cloak]):after {
   color: var(--mp-text) !important;
   border: 1px solid var(--mp-border) !important;
   border-radius: 50px !important;
-  padding: 10px 28px !important;
+  padding: 8px 28px !important;
   font-family: 'Rajdhani', sans-serif !important;
   font-weight: 600;
   font-size: 0.8rem;
@@ -257,10 +257,16 @@ body:has([v-cloak]):after {
 #app select { cursor: pointer; }
 
 /* ── Tooltips ── */
+#app .tooltip {
+  background: var(--mp-bg-card) !important;
+  color: var(--mp-text) !important;
+  border: 1px solid var(--mp-border) !important;
+  border-radius: var(--mp-radius-sm) !important;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+}
 #app .tooltip:has(>.device) {
-  background: rgba(11,18,32,0.95);
-  border: 1px solid var(--mp-border);
-  border-radius: var(--mp-radius);
+  background: rgba(11,18,32,0.95) !important;
   width: auto;
 }
 #app img.device {
@@ -370,17 +376,3 @@ body:has([v-cloak]):after {
   border: 1px solid var(--mp-border);
 }
 
-/* ── Footer link ── */
-.footer-link {
-  text-align: center;
-  padding: 32px 0 24px;
-  font-size: 0.7rem;
-  letter-spacing: 1px;
-  color: var(--mp-text-dim);
-}
-.footer-link a {
-  color: var(--mp-text-dim) !important;
-}
-.footer-link a:hover {
-  color: var(--mp-cyan) !important;
-}
