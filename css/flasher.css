@@ -178,7 +178,7 @@ body:has([v-cloak]):after {
 #app .list.border {
   border-color: var(--mp-border);
   border-radius: var(--mp-radius);
-  overflow: hidden;
+  overflow: visible;
 }
 
 #app .list li {
@@ -264,11 +264,17 @@ body:has([v-cloak]):after {
   border-radius: var(--mp-radius-sm) !important;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.75rem;
+  z-index: 100 !important;
 }
 #app .tooltip:has(>.device) {
-  background: rgba(11,18,32,0.95) !important;
+  background: rgba(11,18,32,0.97) !important;
   width: auto;
   max-width: min(300px, 40vw);
+  z-index: 100 !important;
+}
+
+#app details {
+  overflow: visible !important;
 }
 #app img.device {
   width: 100%;
