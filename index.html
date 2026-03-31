@@ -206,11 +206,11 @@
         <h6 class="section-title" style="margin-top: 24px;">Choose role</h6>
         <div class="role-grid">
           <template v-for="firmware in selected.device.firmware">
-            <button v-if="firmwareHasData(firmware)" class="role-card" :class="getRoleFwValue(firmware, 'class')" @click="selected.firmware = firmware">
-              <i class="role-icon">{{ getRoleFwValue(firmware, 'icon') }}</i>
+            <div v-if="firmwareHasData(firmware)" class="role-card" :class="getRoleFwValue(firmware, 'class')" @click="selected.firmware = firmware">
+              <span class="role-icon">{{ getRoleFwValue(firmware, 'icon') }}</span>
               <div class="role-label">{{ getRoleFwValue(firmware, 'title') }} {{ getRoleFwValue(firmware, 'subTitle') }}</div>
               <div class="role-desc" v-if="getRoleFwValue(firmware, 'tooltip')" v-html="getRoleFwValue(firmware, 'tooltip')"></div>
-            </button>
+            </div>
           </template>
         </div>
       </div>

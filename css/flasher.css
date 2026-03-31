@@ -383,48 +383,47 @@ body:has([v-cloak]):after {
 }
 
 .role-card {
-  all: unset !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 10px !important;
-  padding: 32px 20px 28px !important;
-  background: var(--mp-bg-card) !important;
-  border: 1px solid var(--mp-border) !important;
-  border-radius: var(--mp-radius) !important;
-  cursor: pointer !important;
-  transition: all 0.2s !important;
-  text-align: center !important;
-  box-sizing: border-box !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 32px 20px 28px;
+  background: var(--mp-bg-card);
+  border: 1px solid var(--mp-border);
+  border-radius: var(--mp-radius);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 .role-card:hover {
-  border-color: var(--mp-orange) !important;
-  background: var(--mp-bg-card-hover) !important;
-  box-shadow: 0 0 20px rgba(212,114,42,0.1) !important;
+  border-color: var(--mp-orange);
+  background: var(--mp-bg-card-hover);
+  box-shadow: 0 0 20px rgba(212,114,42,0.1);
 }
 
 .role-card .role-icon {
   font-family: 'Material Symbols Outlined';
-  font-size: 2rem !important;
-  color: var(--mp-cyan) !important;
-  line-height: 1 !important;
+  font-size: 2rem;
+  color: var(--mp-cyan);
+  line-height: 1;
 }
 
 .role-card .role-label {
-  font-family: 'Rajdhani', sans-serif !important;
-  font-weight: 600 !important;
-  font-size: 1rem !important;
-  letter-spacing: 1px !important;
-  color: var(--mp-text-bright) !important;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: var(--mp-text-bright);
 }
 
 .role-card .role-desc {
-  font-size: 0.7rem !important;
-  color: var(--mp-text-dim) !important;
-  line-height: 1.4 !important;
-  font-family: 'IBM Plex Mono', monospace !important;
+  font-size: 0.7rem;
+  color: var(--mp-text-dim);
+  line-height: 1.4;
+  font-family: 'IBM Plex Mono', monospace;
 }
 
 /* Custom firmware hint */
