@@ -268,11 +268,13 @@ body:has([v-cloak]):after {
 #app .tooltip:has(>.device) {
   background: rgba(11,18,32,0.95) !important;
   width: auto;
+  max-width: min(300px, 40vw);
 }
 #app img.device {
-  width: 400px;
-  max-width: 400px;
-  max-height: 400px;
+  width: 100%;
+  max-width: 280px;
+  max-height: 280px;
+  object-fit: contain;
 }
 
 /* ── Flash log ── */
